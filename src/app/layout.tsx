@@ -25,6 +25,7 @@ export default function RootLayout({
           <body className={inter.className}>
             <AppBar/>
             {children}
+            <Footer/>
           </body>
         </html>
       </AuthProvider>
