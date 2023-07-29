@@ -1,7 +1,7 @@
 import CredentialsProvider from "next-auth/providers/credentials";
 import NextAuth from "next-auth/next";
-import GoogleProvider from "next-auth/providers/google"
-import { loginApi } from "@/APIs/authApi";
+import { loginApi } from "@/api/usuariosApi";
+
 
 export default NextAuth({
     providers: [
