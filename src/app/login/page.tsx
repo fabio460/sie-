@@ -27,7 +27,7 @@ export default function Example() {
           </div>
   
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <form className="space-y-6" action="/" method="POST" onSubmit={login}>
+            <form className="space-y-6"  method="POST" onSubmit={login}>
               <div>
                 <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                   Email address
