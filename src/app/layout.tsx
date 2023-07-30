@@ -23,11 +23,11 @@ export default function RootLayout({
       <AuthProvider>
         <html lang="en">
           <body className={inter.className}>
-            {/* <AppBar/> */}
+            <AppBar/>
             <div className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
                {children}
             </div>
-            {/* <Footer/> */}
+            <Footer/>
           </body>
         </html>
       </AuthProvider>
