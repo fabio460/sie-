@@ -10,20 +10,7 @@ export default function Login() {
   const [error, seterror] = useState(false)
   const [loading, setloading] = useState(false)
     const login = async()=>{
-      setloading(true)
-      const res =await loginApi(email as string, password as string)
-      if (res.auth) {     
-        seterror(false)
-        signIn("credentials",{
-          username:email,
-          password,
-          callbackUrl:"/",
-          redirect:true,
-        })
-      }else{
-        seterror(true)
-        setloading(false)
-      }
+      alert("Ação de relembrar senha, falta implementar")
     }
     function loginKeyUp(e:any) {
       if (e.code === "Enter") {
@@ -40,7 +27,7 @@ export default function Login() {
               alt="Your Company"
             />
             <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-              Entre com sua conta
+              Esqueceu sua senha?
             </h2>
           </div>
   
@@ -48,7 +35,7 @@ export default function Login() {
             <div className="space-y-6" >
               <div>
                 <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-                  Usuário
+                  Email
                 </label>
                 <div className="mt-2">
                   <input
@@ -65,34 +52,6 @@ export default function Login() {
               </div>
   
               <div>
-                <div className="flex items-center justify-between">
-                  <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
-                    Senha
-                  </label>
-                  <div className="text-sm">
-                    <a href="\forgetPassword" className="font-semibold text-indigo-600 hover:text-indigo-500">
-                      Esqueceu a senha?
-                    </a>
-                  </div>
-                </div>
-                <div className="mt-2">
-                  <input
-                    onKeyUp={e=> loginKeyUp(e)}
-                    id="password"
-                    name="password"
-                    type="password"
-                    autoComplete="current-password"
-                    required
-                    onChange={e=>setpassword(e.target.value)}
-                    className={`block w-full rounded-md border-0 p-1 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 ${error && 'border-2 border-rose-600'} `}
-                  />
-                </div>
-              </div>
-              {
-                error &&
-                <div className='text-rose-600'>Usuário ou senha inválidos</div>
-              }
-              <div>
                 <button
                   onClick={login}
                   onKeyUp={e=> loginKeyUp(e)}
@@ -100,16 +59,19 @@ export default function Login() {
                   className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
                   {
-                    loading ? <CarregandoBtn/>:<span>Entrar</span>
+                    loading ? <CarregandoBtn/>:<span>Enviar</span>
                   }
                 </button>
               </div>
             </div>
   
             <p className="mt-10 text-center text-sm text-gray-500">
-              Não é membro?{' '}
               <a href="/cadastro" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
                 cadastre-se
+              </a>
+              {' '} ou {' '}
+              <a href="/login" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+                volte ao login
               </a>
             </p>
           </div>

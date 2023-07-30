@@ -5,7 +5,7 @@ export default function BtnLogin() {
   if (session) {
     return (
       <>
-        <span>  {session?.user?.name} </span>
+        <span style={{marginRight:"10px"}}>  {session?.user?.name} </span>
         <button onClick={() => signOut()}>Sair</button>
       </>
     )
