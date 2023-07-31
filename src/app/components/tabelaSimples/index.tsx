@@ -8,7 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Card from '@mui/material/Card';
-import style from "./tabela.module.css"
+import "./tabela.css"
 
 type selectedType={
   id:string,
@@ -47,6 +47,7 @@ export default function BasicTable() {
         return true
       }
     })
+    console.log(data)
     if (existe) {
       let aux:selectedType[]=[]
       aux = selected.filter(s=>{
@@ -98,8 +99,8 @@ export default function BasicTable() {
                 <div>{row.fora}</div>
               </TableCell>
               <TableCell align="left" component="th" scope="row">
-                <div className={style.resultadoItem}>
-                  <Card key={row.id+"casa"} className={`${style.card} ${style.card}${row.id} ${style.cardActive}`}  onClick={e=> handleClick(e, {
+                <div className='resultadoItem'>
+                  <Card key={row.id+"casa"} className={`card card${row.id} text-red-50`}  onClick={e=> handleClick(e, {
                     id:row.id,
                     option:row.id+"casa",
                     hora:row.hora,
@@ -113,7 +114,7 @@ export default function BasicTable() {
                     <div>{row.odiCasa}</div>
                     <div>{row.casa}</div>
                   </Card>
-                  <Card key={row.id+"empate"} className={`${style.card} ${style.card}${row.id} ${style.cardActive}`} onClick={e=> handleClick(e, {
+                  <Card key={row.id+"empate"} className={`card card${row.id}`} onClick={e=> handleClick(e, {
                     id:row.id,
                     option:row.id+"empate",
                     hora:row.hora,
@@ -128,7 +129,7 @@ export default function BasicTable() {
                     <div>{row.odiEmpate}</div>
                     <div>Empate</div>
                   </Card>
-                  <Card key={row.id+"fora"} className={`${style.card} ${style.card}${row.id} ${style.cardActive}`} onClick={e=> handleClick(e, {
+                  <Card key={row.id+"fora"} className={`card card${row.id}`} onClick={e=> handleClick(e, {
                     id:row.id,
                     option:row.id+"fora",
                     hora:row.hora,
@@ -144,7 +145,6 @@ export default function BasicTable() {
                     <div>{row.fora}</div>
                   </Card>
                 </div>
-                <div style={{background:"red"}}>teste</div>
               </TableCell>
             </TableRow>
           ))}
