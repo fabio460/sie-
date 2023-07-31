@@ -42,13 +42,13 @@ const rows = [
 
 export default function BasicTable() {
   const [selected, setSelected] = useState<selectedType[]>([])
+
   const handleClick = (e:any, data:selectedType, option:string)=>{
     let existe = selected.find(s=>{
       if (s.option === option) {
         return true
       }
     })
-    console.log(data)
     if (existe) {
       let aux:selectedType[]=[]
       aux = selected.filter(s=>{
@@ -65,21 +65,19 @@ export default function BasicTable() {
       })
       setSelected([...aux,data])
     }
-    
-    const cardsArray = document.querySelectorAll(".card"+data.id)
-    
-    cardsArray.forEach(card=>{
-      if (card.className.includes("cardActive")) {
-        alert(card.className)
-      }
-      card.classList.remove("cardActive")
-    })
     const cardSelected = e.target.parentElement
-    cardSelected.classList.add("cardActive")
-    
+    if (cardSelected.className.includes("cardActive")) {
+      cardSelected.classList.remove("cardActive")
+    }else{
+      const cardsArray = document.querySelectorAll(".card"+data.id)
+      cardsArray.forEach(card=>{
+        card.classList.remove("cardActive")
+      })
+      cardSelected.classList.add("cardActive")
+    }   
   }
 
-  
+
   return (
     <div>
       <TableContainer component={Paper}>
@@ -106,7 +104,7 @@ export default function BasicTable() {
                 </TableCell>
                 <TableCell align="left" component="th" scope="row">
                   <div className='resultadoItem'>
-                    <div key={row.id+"casa"} className={`card card${row.id}`}  onClick={e=> handleClick(e, {
+                    <div key={row.id+"casa"} id={row.id+"casa"}  className={`card card${row.id}`}  onClick={e=> handleClick(e, {
                       id:row.id,
                       option:row.id+"casa",
                       hora:row.hora,
@@ -121,7 +119,7 @@ export default function BasicTable() {
                       <div>{row.odiCasa}</div>
                       <div>{row.casa}</div>
                     </div>
-                    <div key={row.id+"empate"} className={`card card${row.id}`} onClick={e=> handleClick(e, {
+                    <div key={row.id+"empate"} id={row.id+"empate"}  className={`card card${row.id}`} onClick={e=> handleClick(e, {
                       id:row.id,
                       option:row.id+"empate",
                       hora:row.hora,
@@ -137,7 +135,7 @@ export default function BasicTable() {
                       <div>{row.odiEmpate}</div>
                       <div>Empate</div>
                     </div>
-                    <div key={row.id+"fora"} className={`card card${row.id}`} onClick={e=> handleClick(e, {
+                    <div key={row.id+"fora"} id={row.id+"fora"}  className={`card card${row.id}`} onClick={e=> handleClick(e, {
                       id:row.id,
                       option:row.id+"fora",
                       hora:row.hora,
@@ -160,7 +158,9 @@ export default function BasicTable() {
           </TableBody>
         </Table>
       </TableContainer>
-      {JSON.stringify(selected)}
+      {selected.map((elem,key)=>{
+        return <div>{elem.mcSelecionado}</div>
+      })}
     </div>
   );
 }
