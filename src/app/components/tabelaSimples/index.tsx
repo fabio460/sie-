@@ -144,6 +144,7 @@ export default function BasicTable() {
                     <div>{row.fora}</div>
                   </Card>
                 </div>
+                <div style={{background:"red"}}>teste</div>
               </TableCell>
             </TableRow>
           ))}
