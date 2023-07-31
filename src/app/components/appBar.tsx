@@ -34,7 +34,7 @@ export default function AppBar() {
 
   return (
     <header className="bg-white">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+      <nav className="bodyAll headerPading mx-auto flex  items-center justify-between py-6" aria-label="Global">
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
@@ -109,8 +109,8 @@ export default function AppBar() {
           <a href="/minhasApostas" className="text-sm font-semibold leading-6 text-gray-900">
             minhas apostas
           </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Company
+          <a href="/compani" className="text-sm font-semibold leading-6 text-gray-900">
+            Compania
           </a>
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -182,10 +182,10 @@ export default function AppBar() {
                   Marketplace
                 </a>
                 <a
-                  href="#"
+                  href="\compani"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  Company
+                  Compania
                 </a>
               </div>
               <div className="py-6">

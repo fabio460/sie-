@@ -15,7 +15,23 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
+.bodyAll{
+  padding: 0 6%;
+}
+.headerPading{
+  padding-top:1%;
+  padding-bottom: 1%;
+}
 
+@media (max-width:700px) {
+  .bodyAll{
+    padding: 0 2%;
+  }
+  .headerPading{
+    padding-top:2%;
+    padding-bottom: 2%;
+  }
+}
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(

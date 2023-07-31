@@ -1,0 +1,15 @@
+.resultadoItem{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    text-align: center;
+}
+
+.card{
+    cursor: pointer;
+    z-index: 3;
+}
+.cardActive{
+    background-color: brown;
+    color: yellow;
+}
