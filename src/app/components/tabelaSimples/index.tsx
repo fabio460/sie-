@@ -57,7 +57,12 @@ export default function BasicTable() {
       })
       setSelected(aux)
     }else{
-      setSelected([...selected,data])
+      const aux = selected.filter(s=>{
+        if (s.id !== data.id) {
+          return s
+        }
+      })
+      setSelected([...aux,data])
     }
     
     const cardsArray = document.querySelectorAll(".card"+data.id)
@@ -95,7 +100,7 @@ export default function BasicTable() {
               </TableCell>
               <TableCell align="left" component="th" scope="row">
                 <div className='resultadoItem'>
-                  <Card key={row.id+"casa"} className={`card card${row.id}`}  onClick={e=> handleClick(e, {
+                  <Card key={row.id+"casa"} className={`card card${row.id} cardActive`}  onClick={e=> handleClick(e, {
                     id:row.id,
                     option:row.id+"casa",
                     hora:row.hora,
