@@ -159,7 +159,7 @@ export default function BasicTable() {
         </Table>
       </TableContainer>
       {selected.map((elem,key)=>{
-        return <div>{elem.mcSelecionado}</div>
+        return <div key={key}>{elem.mcSelecionado}</div>
       })}
     </div>
   );
