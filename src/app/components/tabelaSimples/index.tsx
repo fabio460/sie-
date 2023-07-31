@@ -1,3 +1,4 @@
+"use client"
 import React,{useState} from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -40,9 +41,6 @@ const rows = [
 
 export default function BasicTable() {
   const [selected, setSelected] = useState<selectedType[]>([])
-  const [listSelected, setListSelected] = useState<selectedType[]>([])
-
-
   const handleClick = (e:any, data:selectedType, option:string)=>{
     let existe = selected.find(s=>{
       if (s.option === option) {
@@ -70,7 +68,7 @@ export default function BasicTable() {
     cardSelected.classList.add("cardActive")
     
   }
-  
+
   console.log(selected)
   return (
     <TableContainer component={Paper}>
