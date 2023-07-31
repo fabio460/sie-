@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React,{useState} from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -39,20 +39,21 @@ const rows = [
 ];
 
 export default function BasicTable() {
-  const [selected, setSelected] = React.useState<selectedType[]>([])
-  const [listSelected, setListSelected] = React.useState<selectedType[]>([])
+  const [selected, setSelected] = useState<selectedType[]>([])
+  const [listSelected, setListSelected] = useState<selectedType[]>([])
 
 
   const handleClick = (e:any, data:selectedType, option:string)=>{
-    let aux:selectedType[]=[]
     let existe = selected.find(s=>{
       if (s.option === option) {
         return true
       }
     })
+    console.log(existe)
     if (existe) {
+      let aux:selectedType[]=[]
       aux = selected.filter(s=>{
-        if (s.id !== existe?.id) {
+        if (s.option !== existe?.option) {
           return s
         }
       })
