@@ -70,6 +70,7 @@ export default function BasicTable() {
     cardSelected.classList.add("cardActive")
     
   }
+  
   console.log(selected)
   return (
     <TableContainer component={Paper}>
