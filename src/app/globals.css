@@ -1,5 +1,6 @@
-
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -22,21 +23,6 @@
   padding-bottom: 1%;
 }
 
-.resultadoItem{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 10px;
-  text-align: center;
-}
-
-.card{
-  cursor: pointer;
-  z-index: 3;
-}
-.cardActive{
-  background-color: brown;
-  color: yellow;
-}
 @media (max-width:700px) {
   .bodyAll{
     padding: 0 2%;

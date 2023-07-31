@@ -19,7 +19,8 @@ type selectedType={
   odiCasa:number,
   odiFora:number,
   odiEmpate:number,
-  select?:boolean
+  select?:boolean,
+  mcSelecionado:string
 }
 function createData(
   id:string,
@@ -66,7 +67,11 @@ export default function BasicTable() {
     }
     
     const cardsArray = document.querySelectorAll(".card"+data.id)
+    
     cardsArray.forEach(card=>{
+      if (card.className.includes("cardActive")) {
+        alert(card.className)
+      }
       card.classList.remove("cardActive")
     })
     const cardSelected = e.target.parentElement
@@ -74,82 +79,88 @@ export default function BasicTable() {
     
   }
 
-  console.log(selected)
+  
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Hora</TableCell>
-            <TableCell align="left">Duelos</TableCell>
-            <TableCell align="center">Resultado</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key={row.casa}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell >
-                  {row.hora}
-              </TableCell>
-              <TableCell align="left">
-                <div>{row.casa}</div>
-                <div>{row.fora}</div>
-              </TableCell>
-              <TableCell align="left" component="th" scope="row">
-                <div className='resultadoItem'>
-                  <div key={row.id+"casa"} className={`card card${row.id} text-red-50`}  onClick={e=> handleClick(e, {
-                    id:row.id,
-                    option:row.id+"casa",
-                    hora:row.hora,
-                    casa: row.casa,
-                    fora: row.fora,
-                    odiCasa:row.odiFora,
-                    odiFora:row.odiFora,
-                    odiEmpate:row.odiEmpate,
-                    select:true
-                  }, row.id+"casa")} >
-                    <div>{row.odiCasa}</div>
-                    <div>{row.casa}</div>
-                  </div>
-                  <div key={row.id+"empate"} className={`card card${row.id}`} onClick={e=> handleClick(e, {
-                    id:row.id,
-                    option:row.id+"empate",
-                    hora:row.hora,
-                    casa: row.casa,
-                    fora: row.fora,
-                    odiCasa:row.odiFora,
-                    odiFora:row.odiFora,
-                    odiEmpate:row.odiEmpate,
-                    select:true
-
-                  }, row.id+"empate")}>
-                    <div>{row.odiEmpate}</div>
-                    <div>Empate</div>
-                  </div>
-                  <div key={row.id+"fora"} className={`card card${row.id}`} onClick={e=> handleClick(e, {
-                    id:row.id,
-                    option:row.id+"fora",
-                    hora:row.hora,
-                    casa: row.casa,
-                    fora: row.fora,
-                    odiCasa:row.odiFora,
-                    odiFora:row.odiFora,
-                    odiEmpate:row.odiEmpate,
-                    select:true
-
-                  }, row.id+"fora")}>
-                    <div>{row.odiFora}</div>
-                    <div>{row.fora}</div>
-                  </div>
-                </div>
-              </TableCell>
+    <div>
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Hora</TableCell>
+              <TableCell align="left">Duelos</TableCell>
+              <TableCell align="center">Resultado</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <TableRow
+                key={row.casa}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              >
+                <TableCell >
+                    {row.hora}
+                </TableCell>
+                <TableCell align="left">
+                  <div>{row.casa}</div>
+                  <div>{row.fora}</div>
+                </TableCell>
+                <TableCell align="left" component="th" scope="row">
+                  <div className='resultadoItem'>
+                    <div key={row.id+"casa"} className={`card card${row.id}`}  onClick={e=> handleClick(e, {
+                      id:row.id,
+                      option:row.id+"casa",
+                      hora:row.hora,
+                      casa: row.casa,
+                      fora: row.fora,
+                      odiCasa:row.odiFora,
+                      odiFora:row.odiFora,
+                      odiEmpate:row.odiEmpate,
+                      select:true,
+                      mcSelecionado:row.casa
+                    }, row.id+"casa")} >
+                      <div>{row.odiCasa}</div>
+                      <div>{row.casa}</div>
+                    </div>
+                    <div key={row.id+"empate"} className={`card card${row.id}`} onClick={e=> handleClick(e, {
+                      id:row.id,
+                      option:row.id+"empate",
+                      hora:row.hora,
+                      casa: row.casa,
+                      fora: row.fora,
+                      odiCasa:row.odiFora,
+                      odiFora:row.odiFora,
+                      odiEmpate:row.odiEmpate,
+                      select:true,
+                      mcSelecionado:"empate"
+
+                    }, row.id+"empate")}>
+                      <div>{row.odiEmpate}</div>
+                      <div>Empate</div>
+                    </div>
+                    <div key={row.id+"fora"} className={`card card${row.id}`} onClick={e=> handleClick(e, {
+                      id:row.id,
+                      option:row.id+"fora",
+                      hora:row.hora,
+                      casa: row.casa,
+                      fora: row.fora,
+                      odiCasa:row.odiFora,
+                      odiFora:row.odiFora,
+                      odiEmpate:row.odiEmpate,
+                      select:true,
+                      mcSelecionado:row.fora
+
+                    }, row.id+"fora")}>
+                      <div>{row.odiFora}</div>
+                      <div>{row.fora}</div>
+                    </div>
+                  </div>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      {JSON.stringify(selected)}
+    </div>
   );
 }
