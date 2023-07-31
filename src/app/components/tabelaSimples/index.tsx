@@ -35,9 +35,12 @@ function createData(
 }
 
 const rows = [
-  createData("id1","3:00",'Mc FABIO', "MC Biel", 3.36,1.3, 2.23),
-  createData("id2","16:00",'mC TESTE', "MC murilo", 1.25, 2.39, 2.2),
-
+  createData("id1","3:00",'Gordão Zn', "Adrien", 3.36,1.33, 2.23),
+  createData("id2","16:00",'mC TESTE', "MC murilo", 1.25, 2.39, 2.21),
+  createData("id3","16:00",'mC Spike', "MC Devilzinha", 1.25, 2.39, 2.26),
+  createData("id4","16:00",'mC Neo Bxd', "MC Zed", 1.25, 2.39, 2.27),
+  createData("id5","16:00",'mC Alê ', "MC Braga bxd", 1.25, 2.39, 2.23),
+  createData("id6","16:00",'mC Phl', "MC Mr Pac", 1.25, 2.39, 3.29),
 ];
 
 export default function BasicTable() {
@@ -159,7 +162,7 @@ export default function BasicTable() {
         </Table>
       </TableContainer>
       {selected.map((elem,key)=>{
-        return <div key={key}>{elem.mcSelecionado}</div>
+        return <div key={key}>Aposta em  {elem.mcSelecionado}</div>
       })}
     </div>
   );
