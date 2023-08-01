@@ -21,18 +21,17 @@ function createData(
   fora: string,
   odiCasa:number,
   odiFora:number,
-  odiEmpate:number
 ) {
-  return {id ,hora ,casa, fora, odiCasa, odiFora, odiEmpate };
+  return {id ,hora ,casa, fora, odiCasa, odiFora };
 }
 
 const rows = [
-  createData("id1","3:00",'Gordão Zn', "Adrien", 3.36,1.33, 4.00),
-  createData("id2","16:00",'mC TESTE', "MC murilo", 1.25, 2.39, 1.80),
-  createData("id3","16:00",'mC Spike', "MC Devilzinha", 1.25, 2.39, 2.26),
-  createData("id4","16:00",'mC Neo Bxd', "MC Zed", 1.25, 2.39, 2.27),
-  createData("id5","16:00",'mC Alê ', "MC Braga bxd", 1.25, 2.39, 2.23),
-  createData("id6","16:00",'mC Phl', "MC Mr Pac", 1.25, 2.39, 3.29),
+  createData("id1","1°",'Gordão Zn', "Adrien", 3.36, 4.00),
+  createData("id2","1°",'mC TESTE', "MC murilo", 1.25, 1.80),
+  createData("id3","1°",'mC Spike', "MC Devilzinha", 1.25, 2.26),
+  createData("id4","1°",'mC Neo Bxd', "MC Zed", 1.25, 2.27),
+  createData("id5","1°",'mC Alê ', "MC Braga bxd", 1.25, 2.23),
+  createData("id6","1°",'mC Phl', "MC Mr Pac", 1.25, 3.29),
 ];
 
 export default function BasicTable() {
@@ -72,11 +71,6 @@ export default function BasicTable() {
     }   
   }
 
-  function calculoDaOdi(total:number,aposta:number) {
-    return (total/aposta).toFixed(2)
-  }
-
-  console.log(calculoDaOdi(1800, 500))
   const dispatch = useAppDispatch()
   dispatch(setApostas(selected))
   return (
@@ -84,9 +78,9 @@ export default function BasicTable() {
         <Table sx={{ minWidth: 600, maxWidth:800 }} aria-label="simple table">
           <TableHead sx={{overflowX:"scroll"}}>
             <TableRow>
-              <TableCell>Hora</TableCell>
+              <TableCell>Fase</TableCell>
               <TableCell align="left">Duelos</TableCell>
-              <TableCell align="center">Resultado</TableCell>
+              <TableCell align="center">Quartas de final</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -112,7 +106,6 @@ export default function BasicTable() {
                       fora: row.fora,
                       odiCasa:row.odiFora,
                       odiFora:row.odiFora,
-                      odiEmpate:row.odiEmpate,
                       select:true,
                       vencedor:row.casa,
                       odiVencedor:row.odiCasa
@@ -120,7 +113,7 @@ export default function BasicTable() {
                       <div>{row.odiCasa.toFixed(2)}</div>
                       <div>{row.casa}</div>
                     </div>
-                    <div key={row.id+"empate"} id={row.id+"empate"}  className={`card card${row.id}`} onClick={e=> handleClick(e, {
+                    {/* <div key={row.id+"empate"} id={row.id+"empate"}  className={`card card${row.id}`} onClick={e=> handleClick(e, {
                       id:row.id,
                       option:row.id+"empate",
                       hora:row.hora,
@@ -134,9 +127,9 @@ export default function BasicTable() {
                       odiVencedor:row.odiEmpate
 
                     }, row.id+"empate")}>
-                      <div>{row.odiEmpate.toFixed(2)}</div>
-                      <div>Empate</div>
-                    </div>
+                      
+                    </div> */}
+                      <div style={{display:"flex", alignItems:"center", justifyContent:"center"}}>x</div>
                     <div key={row.id+"fora"} id={row.id+"fora"}  className={`card card${row.id}`} onClick={e=> handleClick(e, {
                       id:row.id,
                       option:row.id+"fora",
@@ -145,7 +138,6 @@ export default function BasicTable() {
                       fora: row.fora,
                       odiCasa:row.odiFora,
                       odiFora:row.odiFora,
-                      odiEmpate:row.odiEmpate,
                       select:true,
                       vencedor:row.fora,
                       odiVencedor:row.odiFora
