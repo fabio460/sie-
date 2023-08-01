@@ -9,10 +9,15 @@
   background-color: white;
   padding: 4%;
 }
-
-@media (max-width:700px) {
+.abaDeApostasContainerMobile{
+    display: none;
+}
+@media (max-width:1080px) {
     .abaDeApostasContainer{
         display: none;
+    }
+    .abaDeApostasContainerMobile{
+        display: block;
     }
     .apostasBody{
         display: block;

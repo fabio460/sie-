@@ -13,6 +13,9 @@ export default function Apostas() {
       <div className='abaDeApostasContainer'>
        <AbaDeApostas/>
       </div>
+      <div className='abaDeApostasContainerMobile'>
+         <AbaDeApostas/>
+      </div>
     </div>
   )
 }
