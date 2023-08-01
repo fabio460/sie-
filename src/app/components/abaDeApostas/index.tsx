@@ -1,7 +1,6 @@
+"use client"
 import React,{useState} from 'react'
 import { useAppSelector } from '../../../../redux/hooksRedux'
-import MenuItem from '@mui/material/MenuItem';
-import MenuList from '@mui/material/MenuList';
 import "./aba.css"
 import { formatoMonetario } from '@/metodosImportantes'
 import { Button } from '@mui/material';
