@@ -9,19 +9,11 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Card from '@mui/material/Card';
 import "./tabela.css"
+import { selectedType } from '@/types';
+import { useAppDispatch } from '../../../../redux/hooksRedux';
+import { setApostas } from '../../../../redux/reducers/apostasReducer';
 
-type selectedType={
-  id:string,
-  option:string,
-  hora:string,
-  casa: string,
-  fora: string,
-  odiCasa:number,
-  odiFora:number,
-  odiEmpate:number,
-  select?:boolean,
-  mcSelecionado:string
-}
+
 function createData(
   id:string,
   hora:string,
@@ -35,8 +27,8 @@ function createData(
 }
 
 const rows = [
-  createData("id1","3:00",'Gordão Zn', "Adrien", 3.36,1.33, 2.23),
-  createData("id2","16:00",'mC TESTE', "MC murilo", 1.25, 2.39, 2.21),
+  createData("id1","3:00",'Gordão Zn', "Adrien", 3.36,1.33, 4.00),
+  createData("id2","16:00",'mC TESTE', "MC murilo", 1.25, 2.39, 1.80),
   createData("id3","16:00",'mC Spike', "MC Devilzinha", 1.25, 2.39, 2.26),
   createData("id4","16:00",'mC Neo Bxd', "MC Zed", 1.25, 2.39, 2.27),
   createData("id5","16:00",'mC Alê ', "MC Braga bxd", 1.25, 2.39, 2.23),
@@ -80,12 +72,17 @@ export default function BasicTable() {
     }   
   }
 
+  function calculoDaOdi(total:number,aposta:number) {
+    return (total/aposta).toFixed(2)
+  }
 
+  console.log(calculoDaOdi(1800, 500))
+  const dispatch = useAppDispatch()
+  dispatch(setApostas(selected))
   return (
-    <div>
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
+        <Table sx={{ minWidth: 600, maxWidth:800 }} aria-label="simple table">
+          <TableHead sx={{overflowX:"scroll"}}>
             <TableRow>
               <TableCell>Hora</TableCell>
               <TableCell align="left">Duelos</TableCell>
@@ -117,9 +114,10 @@ export default function BasicTable() {
                       odiFora:row.odiFora,
                       odiEmpate:row.odiEmpate,
                       select:true,
-                      mcSelecionado:row.casa
+                      vencedor:row.casa,
+                      odiVencedor:row.odiCasa
                     }, row.id+"casa")} >
-                      <div>{row.odiCasa}</div>
+                      <div>{row.odiCasa.toFixed(2)}</div>
                       <div>{row.casa}</div>
                     </div>
                     <div key={row.id+"empate"} id={row.id+"empate"}  className={`card card${row.id}`} onClick={e=> handleClick(e, {
@@ -132,10 +130,11 @@ export default function BasicTable() {
                       odiFora:row.odiFora,
                       odiEmpate:row.odiEmpate,
                       select:true,
-                      mcSelecionado:"empate"
+                      vencedor:"empate",
+                      odiVencedor:row.odiEmpate
 
                     }, row.id+"empate")}>
-                      <div>{row.odiEmpate}</div>
+                      <div>{row.odiEmpate.toFixed(2)}</div>
                       <div>Empate</div>
                     </div>
                     <div key={row.id+"fora"} id={row.id+"fora"}  className={`card card${row.id}`} onClick={e=> handleClick(e, {
@@ -148,10 +147,11 @@ export default function BasicTable() {
                       odiFora:row.odiFora,
                       odiEmpate:row.odiEmpate,
                       select:true,
-                      mcSelecionado:row.fora
+                      vencedor:row.fora,
+                      odiVencedor:row.odiFora
 
                     }, row.id+"fora")}>
-                      <div>{row.odiFora}</div>
+                      <div>{row.odiFora.toFixed(2)}</div>
                       <div>{row.fora}</div>
                     </div>
                   </div>
@@ -161,9 +161,5 @@ export default function BasicTable() {
           </TableBody>
         </Table>
       </TableContainer>
-      {selected.map((elem,key)=>{
-        return <div key={key}>Aposta em  {elem.mcSelecionado}</div>
-      })}
-    </div>
   );
 }

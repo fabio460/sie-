@@ -1,7 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
 import testeReducer from './reducers/testeReducer'
+import apostasReducer from './reducers/apostasReducer'
 export const store = configureStore({
   reducer: {
+    apostasReducer,
     testeReducer,
   },
 })
