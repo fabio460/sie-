@@ -1,0 +1,13 @@
+.formularioAdm{
+    background-color: white;
+    border-radius: 3px;
+    padding: 1%;
+    width: 40%;
+    margin: 50px auto;
+}
+
+@media (max-width:600px){
+    .formularioAdm{
+        width: 95%;
+    }
+}

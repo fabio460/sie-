@@ -5,6 +5,7 @@ import AuthProvider from './components/AuthProvider'
 import { Providers } from '../../redux/providers'
 import AppBar from './components/appBar'
 import Footer from './components/footer'
+import ListaFirebase from './components/listaFirebase'
 
 const inter = Inter({ subsets: ['latin'] })
 

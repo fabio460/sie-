@@ -1,8 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import testeReducer from './reducers/testeReducer'
 import apostasReducer from './reducers/apostasReducer'
+import listaDeMCs from './reducers/listaDeMCs'
+import removeCheckedsReducer from './reducers/removeCheckedsReducer'
 export const store = configureStore({
   reducer: {
+    removeCheckedsReducer,
+    listaDeMCs,
     apostasReducer,
     testeReducer,
   },
